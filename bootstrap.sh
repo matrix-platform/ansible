@@ -1,1 +1,0 @@
-ansible-playbook -i config/$1/inventory.txt --extra-vars "env=$1" playbook-bootstrap.yml

@@ -1,7 +1,7 @@
 tag: ci
 app: matrix
 data: /data
-repository: registry.gitlab.com
+docker_repository: docker.com
 domain: paramg.com
 port: 8090
 protocol: http

@@ -1,0 +1,4 @@
+app: matrix
+env: build
+data: /data
+port: 8888

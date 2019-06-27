@@ -1,0 +1,17 @@
+- name: start nuget feed
+  docker_container:
+    name: nuget
+    image: loicsharma/baget
+    restart_policy: always
+    recreate: yes
+    env:
+      ApiKey: "{{nuget_api_key}}"
+      Storage__Type: FileSystem
+      Storage__Path: /var/baget/packages
+      Database__Type: Sqlite
+      Database__ConnectionString: Data Source=/var/baget/baget.db
+      Search__Type: Database
+    volumes:
+      - "{{data}}/{{app}}/{{env}}/nuget:/var/baget"
+    networks:
+      - name: "platform.build"

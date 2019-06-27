@@ -33,3 +33,14 @@
   become: yes
   roles:
     - docker
+
+- name: install platform network
+  hosts: nodes
+  vars_files:
+    - config/{{env}}/credentials.yml
+    - config/{{env}}/variables.yml
+  become: yes
+  tasks:
+    - name: create dev network
+      docker_network:
+        name: "platform.{{env}}"

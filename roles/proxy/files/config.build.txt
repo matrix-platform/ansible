@@ -1,0 +1,17 @@
+http://nuget.matrix.paramg.com {
+  proxy / nuget:80 {
+    insecure_skip_verify
+  }
+
+  log
+  errors ./error.log
+}
+
+http://jenkins.matrix.paramg.com {
+  proxy / jenkins:8080 {
+    insecure_skip_verify
+  }
+
+  log
+  errors ./error.log
+}

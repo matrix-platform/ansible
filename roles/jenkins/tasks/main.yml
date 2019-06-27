@@ -1,0 +1,17 @@
+- name: change permission for jenkins volume
+  file:
+    path: "{{data}}/{{app}}/{{env}}/jenkins"
+    state: directory
+    mode: "777"
+
+- name: start jenkins
+  docker_container:
+    name: jenkins
+    image: jenkins/jenkins:lts
+    restart_policy: always
+    recreate: yes
+    env:
+    volumes:
+      - "{{data}}/{{app}}/{{env}}/jenkins:/var/jenkins_home"
+    networks:
+      - name: "platform.build"

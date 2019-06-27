@@ -1,7 +1,7 @@
 tag: release
 app: matrix
 data: /data
-repository: registry.gitlab.com
+repository: docker.com
 domain: paramg.com
 port: 80
 protocol: http

@@ -1,0 +1,30 @@
+- name: install docker
+  hosts: builders
+  vars_files:
+    - config/build/credentials.yml  
+    - config/build/variables.yml
+  become: yes
+  roles:
+    - docker
+
+- name: install platform network
+  hosts: builders
+  vars_files:
+    - config/build/credentials.yml
+    - config/build/variables.yml
+  become: yes
+  tasks:
+    - name: create build network
+      docker_network:
+        name: "platform.build"
+
+- name: install build tools
+  hosts: builders
+  vars_files:
+    - config/build/credentials.yml  
+    - config/build/variables.yml
+  become: yes
+  roles:
+    - nuget
+    - jenkins
+    - proxy

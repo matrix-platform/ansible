@@ -1,0 +1,2 @@
+[builders]
+node-[1:1].build.matrix.paramg.com ansible_user=centos ansible_ssh_private_key_file=~/Projects/matrix/credentials/matrix.pem

@@ -1,0 +1,1 @@
+ansible-playbook -i ../config/build/inventory.txt ../build.yml
