@@ -26,5 +26,3 @@
   become: yes
   roles:
     - nuget
-    - jenkins
-    - proxy

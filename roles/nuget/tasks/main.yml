@@ -17,5 +17,7 @@
       PackageDeletionBehavior: "Unlist"
     volumes:
       - "{{data}}/{{app}}/{{env}}/nuget:/var/baget"
+    ports:
+      - "0.0.0.0:8888:80"
     networks:
       - name: "platform.build"
