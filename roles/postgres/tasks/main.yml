@@ -1,0 +1,19 @@
+- name: create data directory
+  become: yes
+  file:
+    path: "{{data}}/{{app}}/{{env}}/postgres"
+    state: directory
+
+- name: start postgres server
+  docker_container:
+    name: "{{env}}.postgres"
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "matrix"
+      POSTGRES_PASSWORD: "{{postgres_password}}"
+      POSTGRES_DB: "matrix"
+      PGDATA: "{{data}}/{{app}}/{{env}}/postgres"
+    restart_policy: always
+    recreate: yes
+    networks:
+      - name: "platform.{{env}}"
