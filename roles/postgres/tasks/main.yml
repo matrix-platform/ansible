@@ -8,7 +8,7 @@
   docker_container:
     name: "{{env}}.postgres"
     image: postgres:latest
-    environment:
+    env:
       POSTGRES_USER: "matrix"
       POSTGRES_PASSWORD: "{{postgres_password}}"
       POSTGRES_DB: "matrix"

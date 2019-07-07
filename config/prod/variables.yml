@@ -7,3 +7,6 @@ port: 80
 protocol: http
 database: paramg.database.windows.net
 email: paramesh.gunasekaran@gmail.com
+
+kong_data_port: 8000
+kong_admin_port: 8001

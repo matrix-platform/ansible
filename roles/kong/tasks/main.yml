@@ -1,0 +1,23 @@
+- name: create data directory
+  become: yes
+  file:
+    path: "{{data}}/{{app}}/{{env}}/kong"
+    state: directory
+
+- name: run kong migration
+  command: "docker run --rm --network=platform.{{env}} -e 'KONG_DATABASE=matrix' -e 'KONG_PG_HOST={{env}}.postgres' kong:latest kong migrations bootstrap"
+
+- name: start kong server
+  docker_container:
+    name: "{{env}}.kong"
+    image: kong:latest
+    env:
+      KONG_DATABASE: "matrix"
+      KONG_PG_HOST: "{{env}}.postgres"
+    ports:
+      - "0.0.0.0:{{kong_data_port}}:8000"
+      - "0.0.0.0:{{kong_admin_port}}:8001"
+    restart_policy: always
+    recreate: yes
+    networks:
+      - name: "platform.{{env}}"

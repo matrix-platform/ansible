@@ -10,4 +10,5 @@
     - postgres
     - rabbitmq
     - apps
+    - kong
     - proxy
