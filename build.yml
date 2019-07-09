@@ -26,3 +26,4 @@
   become: yes
   roles:
     - nuget
+    - jenkins

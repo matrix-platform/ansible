@@ -13,5 +13,7 @@
     env:
     volumes:
       - "{{data}}/{{app}}/{{env}}/jenkins:/var/jenkins_home"
+    ports:
+      - "0.0.0.0:9090:80"
     networks:
       - name: "platform.build"
